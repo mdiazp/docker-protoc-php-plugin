@@ -6,6 +6,7 @@ RUN git clone -b v1.25.0 https://github.com/grpc/grpc
 
 WORKDIR /grpc
 RUN git submodule update --init
+RUN apt-get install autoconf
 RUN make grpc_php_plugin
 
 #ENV CGO_ENABLED=0 GOFLAGS=-mod=vendor

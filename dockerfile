@@ -1,12 +1,16 @@
 FROM ubuntu:18.04
 
-RUN apt update && apt install -y apt-utils git make build-essential libtool autoconf automake
+RUN apt update && apt install -y apt-utils git make build-essential libtool autoconf automake && \
+    git clone -b v1.25.0 https://github.com/grpc/grpc && \
+    cd grpc && \
+    git submodule update --init && \
+    make grpc_php_plugin
 
-RUN git clone -b v1.25.0 https://github.com/grpc/grpc
-
-WORKDIR /grpc
-RUN git submodule update --init
-RUN make grpc_php_plugin
+#RUN git clone -b v1.25.0 https://github.com/grpc/grpc
+#
+#WORKDIR /grpc
+#RUN git submodule update --init
+#RUN make grpc_php_plugin
 
 #ENV CGO_ENABLED=0 GOFLAGS=-mod=vendor
 

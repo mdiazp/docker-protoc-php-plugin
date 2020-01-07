@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-RUN apt update && apt install -y git
+RUN apt update && apt install -y git make
 
 RUN git clone -b v1.25.0 https://github.com/grpc/grpc
 

@@ -4,7 +4,9 @@ RUN apt update && apt install -y git
 
 RUN git clone -b v1.25.0 https://github.com/grpc/grpc
 
-RUN cd grpc && git submodule update --init && make grpc_php_plugin
+RUN cd grpc
+RUN git submodule update --init
+RUN make grpc_php_plugin
 
 #ENV CGO_ENABLED=0 GOFLAGS=-mod=vendor
 
